@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'LoginPage.dart'; // Import halaman login
 
 class Page2 extends StatelessWidget {
   const Page2({Key? key}) : super(key: key);
@@ -10,11 +11,24 @@ class Page2 extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pop(context); // Navigasi kembali
           },
         ),
         title: Text("Profile"),
         backgroundColor: Colors.grey,
+        actions: [
+          // Tambahkan tombol Logout di AppBar
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              // Navigasi ke halaman login dan gantikan halaman ini
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
